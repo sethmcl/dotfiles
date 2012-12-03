@@ -1,3 +1,6 @@
+[user]
+  name = "Seth McLaughlin"
+  email = s@sethmcl.com
 [alias]
 	c = commit -am
 	up = pull
@@ -27,7 +30,8 @@
 	changed = green
 	untracked = cyan
 [merge]
-	log = true
+  log = true
+  tool = vimdiff
 [url "git@github.com:"]
 	insteadOf = "gh:"
 	pushInsteadOf = "github:"
