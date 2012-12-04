@@ -1,5 +1,7 @@
 # Compiled Python files
 *.pyc
+*.swp
+*.swo
 
 # Folder view configuration files
 .DS_Store
