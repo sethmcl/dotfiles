@@ -25,6 +25,9 @@ curl https://raw.github.com/rupa/z/master/z.sh > ~/bin/z/z.sh
 chmod +x ~/bin/z/z.sh
 # also consider moving over your current .z file if possible. it's painful to rebuild :)
 
+# vim snippets
+cp -r bin/vim/snippets ~/.vim/
+
 
 # add this to the bash_profile file
 #   . ~/code/z/z.sh
