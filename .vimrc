@@ -79,23 +79,12 @@ set background=dark
 nmap <F7> :m--<CR>                 " move line of text up
 nmap <F6> :m+<CR>                  " move line of text down 
 
-"" Yank, Change, Delete to system clipboard
-nnoremap Y y$v$"+y$
-nnoremap yy 0y$0v$"+y$
-vnoremap y ygv"+y
-nnoremap C y$v$"+c
-nnoremap cc 0y$0v$"+c
-vnoremap c ygv"+c
-nnoremap D y$v$"+d$
-nnoremap dd 0y$0v$"+d$
-vnoremap d ygv"+d
-
 "" NERDTree Bindings
-nmap <C-p> :NERDTreeToggle<CR><CR>
+nmap <C-t> :NERDTreeToggle<CR><CR>
 let NERDTreeShowHidden=1
 
-"" Command-T Bindings
-nmap <C-t> :CommandT<CR>
+"" Control-P Bindings
+nmap <C-p> :CtrlP<CR><CR>
 
 "" Tab bindings
 nmap <C-l> :tabn<CR>
