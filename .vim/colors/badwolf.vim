@@ -198,6 +198,7 @@ call HL('FoldColumn', 'mediumgravel', s:gutter)
 " }}}
 " Cursor {{{
 
+call HL('CursorLine',  '', 'deepgravel', 'bold')
 call HL('Cursor',  'coal', 'tardis', 'bold')
 call HL('vCursor', 'coal', 'tardis', 'bold')
 call HL('iCursor', 'coal', 'tardis', 'none')
