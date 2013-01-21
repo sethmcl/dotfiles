@@ -67,6 +67,10 @@ set listchars+=precedes:<
 
 map <C-m> <ESC>
 
+""""""""" NEW
+" Change mapleader
+let mapleader=","
+
 "" Colors
 set t_Co=256
 colorscheme badwolf
@@ -114,9 +118,9 @@ if exists(":Tabularize")
   vmap <Leader>a: :Tabularize /:<CR>
 endif
 
-""""""""" NEW
-" Change mapleader
-let mapleader=","
+"" Tagbar
+nmap <F8> :TagbarToggle<CR>
+vmap <F8> :TagbarToggle<CR>
 
 " Local dirs
 set backupdir=~/.vim/backups
