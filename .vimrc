@@ -119,8 +119,10 @@ if exists(":Tabularize")
 endif
 
 "" Tagbar
-nmap <F8> :TagbarToggle<CR>
-vmap <F8> :TagbarToggle<CR>
+nmap <F8> :TagbarOpen fj<CR>
+vmap <F8> :TagbarOpen fj<CR>
+nmap <F7> :TagbarToggle<CR>
+vmap <F7> :TagbarToggle<CR>
 
 " Local dirs
 set backupdir=~/.vim/backups
