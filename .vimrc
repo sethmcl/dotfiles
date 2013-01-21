@@ -92,7 +92,7 @@ nnoremap dd 0y$0v$"+d$
 vnoremap d ygv"+d
 
 "" NERDTree Bindings
-nmap <C-p> :NERDTreeToggle<CR>
+nmap <C-p> :NERDTreeToggle<CR><CR>
 let NERDTreeShowHidden=1
 
 "" Command-T Bindings
