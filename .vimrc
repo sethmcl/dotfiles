@@ -94,6 +94,7 @@ nmap <C-h> :tabp<CR>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+let g:syntastic_javascript_checker='jshint'
 
 "" Added for Powerline
 set laststatus=2                  " always show the statusline
