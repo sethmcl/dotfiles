@@ -20,6 +20,9 @@ fi
 # save my wrists
 alias e="exit && exit"
 
+# faster directory switching
+alias c="cd $@"
+
 # List all files colorized in long format
 alias l="ls -la ${colorflag}"
 
@@ -39,7 +42,7 @@ fi
 
 # `cat` with beautiful colors. requires Pygments installed.
 # 							   sudo easy_install Pygments
-alias c='pygmentize -O style=monokai -f console256 -g'
+alias ca='pygmentize -O style=monokai -f console256 -g'
 
 # GIT STUFF
 
