@@ -36,7 +36,6 @@ Bundle 'majutsushi/tagbar.git'
 Bundle 'suan/vim-instant-markdown.git'
 Bundle 'vim-scripts/jsbeautify.git'
 Bundle 'tpope/vim-unimpaired.git'
-Bundle 'vimwiki/vimwiki.git'
 
 filetype plugin indent on         " load file type plugins + indentation
 syntax enable
@@ -358,7 +357,3 @@ let g:vimclojure#FuzzyIndent = 1 " Names beginning in 'def' or 'with' to be inde
 
 " Rainbow Parenthesis
 nnoremap <leader>rp :RainbowParenthesesToggle<CR>
-
-" Date macro
-nnoremap <F5> "=strftime("%a %m.%d.%y (%X)")<CR>P
-inoremap <F5> <C-R>=strftime("%a %m.%d.%y (%X)")<CR>
