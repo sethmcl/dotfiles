@@ -362,3 +362,7 @@ nnoremap <leader>rp :RainbowParenthesesToggle<CR>
 " Date macro
 nnoremap <F5> "=strftime("%a %m.%d.%y (%X)")<CR>P
 inoremap <F5> <C-R>=strftime("%a %m.%d.%y (%X)")<CR>
+
+" Vimwiki
+let g:vimwiki_list = [{'path': '~/Dropbox/li/vimwiki/', 'path_html': '~/Dropbox/li/vimwiki_html/'}]
+
