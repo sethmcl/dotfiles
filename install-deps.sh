@@ -18,25 +18,17 @@ sudo bash < <( curl https://raw.github.com/jamiew/git-friendly/master/install.sh
 # you need the code CLI tools YOU FOOL.
 # ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
 
-# https://github.com/rupa/z
-# z, oh how i love you
-mkdir -p ~/bin/z
-curl https://raw.github.com/rupa/z/master/z.sh > ~/bin/z/z.sh
-chmod +x ~/bin/z/z.sh
-# also consider moving over your current .z file if possible. it's painful to rebuild :)
+# https://github.com/clvv/fasd
+mkdir -p ~/bin
+rm -rf ~/bin/fasd
+git clone git://github.com/clvv/fasd.git ~/bin/fasd
+cd ~/bin/fasd && make install
 
 # vim snippets
 cp -r bin/vim/snippets ~/.vim/
 
-
-# add this to the bash_profile file
-#   . ~/code/z/z.sh
-
-
 # cd ~/code
 # git clone git://github.com/dronir/SpotifyControl.git
-
-
 
 # my magic photobooth symlink -> dropbox. I love it.
 # first move Photo Booth folder out of Pictures
