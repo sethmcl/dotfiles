@@ -2,7 +2,7 @@
 
 # https://github.com/jamiew/git-friendly
 # the `push` command which copies the github compare URL to my clipboard is heaven
-sudo bash < <( curl https://raw.github.com/jamiew/git-friendly/master/install.sh)
+# sudo bash <(curl https://raw.github.com/jamiew/git-friendly/master/install.sh)
 
 # https://rvm.io
 # rvm for the rubiess
@@ -22,7 +22,7 @@ sudo bash < <( curl https://raw.github.com/jamiew/git-friendly/master/install.sh
 mkdir -p ~/bin
 rm -rf ~/bin/fasd
 git clone git://github.com/clvv/fasd.git ~/bin/fasd
-cd ~/bin/fasd && make install
+cd ~/bin/fasd && sudo make install
 
 # vim snippets
 cp -r bin/vim/snippets ~/.vim/

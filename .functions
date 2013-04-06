@@ -3,6 +3,11 @@ function md() {
 	mkdir -p "$@" && cd "$@"
 }
 
+# set hostname on osx
+function set_host_osx() {
+  sudo scutil --set HostName $@
+}
+
 
 # find shorthand
 function f() {
