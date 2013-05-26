@@ -24,6 +24,10 @@ rm -rf ~/bin/fasd
 git clone git://github.com/clvv/fasd.git ~/bin/fasd
 cd ~/bin/fasd && sudo make install
 
+# tmuxstart
+curl https://raw.github.com/treyhunner/tmuxstart/master/tmuxstart > ~/bin/tmuxstart
+mkdir -p ~/.tmuxstart
+
 # vim snippets
 cp -r bin/vim/snippets ~/.vim/
 
