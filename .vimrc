@@ -37,6 +37,7 @@ Bundle 'suan/vim-instant-markdown.git'
 Bundle 'vim-scripts/jsbeautify.git'
 Bundle 'tpope/vim-unimpaired.git'
 Bundle 'vimwiki/vimwiki.git'
+Bundle 'samsonw/vim-task'
 
 filetype plugin indent on         " load file type plugins + indentation
 syntax enable
