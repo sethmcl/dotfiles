@@ -365,5 +365,5 @@ nnoremap <F5> "=strftime("%a %m.%d.%y (%X)")<CR>P
 inoremap <F5> <C-R>=strftime("%a %m.%d.%y (%X)")<CR>
 
 " Vimwiki
-let g:vimwiki_list = [{'path': '~/Dropbox/li/vimwiki/', 'path_html': '~/Dropbox/li/vimwiki_html/'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/content', 'path_html': '~/vimwiki/html/'}]
 
