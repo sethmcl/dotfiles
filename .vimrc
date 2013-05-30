@@ -367,3 +367,7 @@ inoremap <F5> <C-R>=strftime("%a %m.%d.%y (%X)")<CR>
 " Vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/content', 'path_html': '~/vimwiki/html/'}]
 
+" Abbreviations
+:vmap <C-c> :s/^/\\\<\C\R\>/<CR>:nohlsearch<CR>
+:vmap <C-A-c> :s/\\<CR[>]//<CR>:nohlsearch<CR>
+
