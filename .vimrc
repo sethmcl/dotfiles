@@ -38,6 +38,7 @@ Bundle 'vim-scripts/jsbeautify.git'
 Bundle 'tpope/vim-unimpaired.git'
 Bundle 'vimwiki/vimwiki.git'
 Bundle 'samsonw/vim-task'
+Bundle 'venusjs/venus.vim'
 
 filetype plugin indent on         " load file type plugins + indentation
 syntax enable
