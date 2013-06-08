@@ -372,3 +372,6 @@ let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/content', 'path_html': '~/Drop
 :vmap <C-c> :s/^/\\\<\C\R\>/<CR>:nohlsearch<CR>
 :vmap <C-A-c> :s/\\<CR[>]//<CR>:nohlsearch<CR>
 
+" venus
+map <F12> :VenusRun<CR>
+
