@@ -44,4 +44,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
+source $HOME/.extra
+source $HOME/.zsh_prompt
+source $HOME/.exports
+source $HOME/.aliases
+source $HOME/.functions
