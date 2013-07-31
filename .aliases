@@ -19,6 +19,7 @@ fi
 
 # save my wrists
 alias e="exit && exit"
+alias r="rm -rf $@"
 
 # faster directory switching
 alias c="cd $@"
