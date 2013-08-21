@@ -28,8 +28,6 @@ Bundle 'tomtom/tlib_vim'
 Bundle 'honza/vim-snippets'
 Bundle 'garbas/vim-snipmate.git'
 Bundle 'https://github.com/scrooloose/nerdcommenter.git'
-Bundle 'lambdalisue/nodeunit.vim.git'
-Bundle 'reinh/vim-makegreen.git'
 Bundle 'godlygeek/tabular.git'
 Bundle 'pangloss/vim-javascript.git'
 Bundle 'majutsushi/tagbar.git'
@@ -39,6 +37,7 @@ Bundle 'tpope/vim-unimpaired.git'
 Bundle 'vimwiki/vimwiki.git'
 Bundle 'samsonw/vim-task'
 Bundle 'venusjs/venus.vim'
+Bundle 'vim-scripts/DirDiff.vim'
 
 filetype plugin indent on         " load file type plugins + indentation
 syntax enable
