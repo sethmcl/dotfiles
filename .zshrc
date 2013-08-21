@@ -44,13 +44,10 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+<<<<<<< HEAD
 # Customize to your needs...
 # Load ~/.extra, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
-# source ~/.extra
-# source ~/.exports
-# source ~/.aliases
-# source ~/.functions
 for file in ~/.{extra,exports,aliases,functions}; do
 	[ -r "$file" ] && source "$file"
 done
