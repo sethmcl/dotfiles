@@ -1,10 +1,12 @@
 #!/bin/bash
 cd "$(dirname "$0")"
-git pull
 function doIt() {
   cp ~/.functions .
   cp ~/.zshrc .
   cp ~/.aliases .
+  git add .
+  git commit -m "update"
+  git push
 }
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
 	doIt
