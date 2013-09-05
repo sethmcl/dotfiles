@@ -82,15 +82,19 @@ nmap <F7> :m--<CR>                 " move line of text up
 nmap <F6> :m+<CR>                  " move line of text down 
 
 "" NERDTree Bindings
-nmap <C-t> :NERDTreeToggle<CR><CR>
+nmap <Leader>t :NERDTreeToggle<CR><CR>
 let NERDTreeShowHidden=1
 
 "" Control-P Bindings
 nmap <C-p> :CtrlP<CR><CR>
 
 "" Tab bindings
-nmap <C-l> :tabn<CR>
-nmap <C-h> :tabp<CR>
+nmap tn :tabn<CR>
+nmap tp :tabp<CR>
+
+"" Jump forward
+map W <C-f>
+map B <C-b>
 
 "" Syntastic
 set statusline+=%#warningmsg#

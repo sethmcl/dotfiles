@@ -4,6 +4,7 @@ function doIt() {
   cp ~/.functions .
   cp ~/.zshrc .
   cp ~/.aliases .
+  cp ~/.vimrc .
   git add .
   git commit -m "update"
   git push
