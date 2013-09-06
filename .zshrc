@@ -58,3 +58,5 @@ unset file
 
 # FasD
 eval "$(fasd --init auto)"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

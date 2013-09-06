@@ -1,43 +1,44 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()                  " Use Vundle to manage plugins
 
-" Configure Bundles (plugins)
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-surround.git'
-Bundle 'scrooloose/syntastic.git'
-Bundle 'scrooloose/nerdtree.git'
-Bundle 'cakebaker/scss-syntax.vim.git'
-Bundle 'Lokaltog/vim-powerline.git'
-Bundle 'tpope/vim-fugitive.git'
-Bundle 'git://repo.or.cz/vcscommand.git'
-Bundle 'kien/ctrlp.vim.git'
-Bundle 'mileszs/ack.vim'
-Bundle 'jimmyhchan/dustjs.vim'
-Bundle 'MarcWeber/vim-addon-mw-utils.git'
-Bundle 'tomtom/tlib_vim'
-Bundle 'honza/vim-snippets'
-Bundle 'garbas/vim-snipmate.git'
-Bundle 'https://github.com/scrooloose/nerdcommenter.git'
-Bundle 'godlygeek/tabular.git'
-Bundle 'pangloss/vim-javascript.git'
-Bundle 'majutsushi/tagbar.git'
-Bundle 'suan/vim-instant-markdown.git'
-Bundle 'vim-scripts/jsbeautify.git'
-Bundle 'tpope/vim-unimpaired.git'
-Bundle 'vimwiki/vimwiki.git'
-Bundle 'samsonw/vim-task'
-Bundle 'venusjs/venus.vim'
-Bundle 'vim-scripts/DirDiff.vim'
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'gmarik/vundle'
+NeoBundle 'tpope/vim-surround.git'
+NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'scrooloose/nerdtree.git'
+NeoBundle 'cakebaker/scss-syntax.vim.git'
+NeoBundle 'Lokaltog/vim-powerline.git'
+NeoBundle 'tpope/vim-fugitive.git'
+NeoBundle 'git://repo.or.cz/vcscommand.git'
+NeoBundle 'jimmyhchan/dustjs.vim'
+NeoBundle 'MarcWeber/vim-addon-mw-utils.git'
+NeoBundle 'tomtom/tlib_vim'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'garbas/vim-snipmate.git'
+NeoBundle 'https://github.com/scrooloose/nerdcommenter.git'
+NeoBundle 'godlygeek/tabular.git'
+NeoBundle 'pangloss/vim-javascript.git'
+NeoBundle 'majutsushi/tagbar.git'
+NeoBundle 'suan/vim-instant-markdown.git'
+NeoBundle 'vim-scripts/jsbeautify.git'
+NeoBundle 'tpope/vim-unimpaired.git'
+NeoBundle 'vimwiki/vimwiki.git'
+NeoBundle 'samsonw/vim-task'
+NeoBundle 'venusjs/venus.vim'
+NeoBundle 'vim-scripts/DirDiff.vim'
+NeoBundle 'tpope/vim-rails.git'
+NeoBundle 'Shougo/unite.vim.git'
+NeoBundle 'Shougo/vimproc.vim.git'
+NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 't9md/vim-unite-ack.git'
 
 filetype plugin indent on         " load file type plugins + indentation
 syntax enable
@@ -68,7 +69,6 @@ set listchars+=precedes:<
 
 map <C-m> <ESC>
 
-""""""""" NEW
 " Change mapleader
 let mapleader=","
 
@@ -81,20 +81,46 @@ set background=dark
 nmap <F7> :m--<CR>                 " move line of text up
 nmap <F6> :m+<CR>                  " move line of text down 
 
-"" NERDTree Bindings
-nmap <Leader>t :NERDTreeToggle<CR><CR>
-let NERDTreeShowHidden=1
+"" Searching
+if executable('ack')
+    set grepprg=ack\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow\ $*
+    set grepformat=%f:%l:%c:%m
+    let g:unite_source_grep_command='ack'
+    let g:unite_source_grep_default_opts='--no-heading --no-color -a -C4'
+    let g:unite_source_grep_recursive_opt=''
+  endif
+
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
+  set grepformat=%f:%l:%c:%m
+  let g:unite_source_grep_command='ag'
+  let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
+  let g:unite_source_grep_recursive_opt=''
+endif
+
+"" VIM Filer Explorer
+let g:vimfiler_as_default_explorer = 1
+nmap <Leader>t :VimFilerSplit<CR>
 
 "" Control-P Bindings
-nmap <C-p> :CtrlP<CR><CR>
+nmap <Leader>. :CtrlP<CR>
 
 "" Tab bindings
 nmap tn :tabn<CR>
 nmap tp :tabp<CR>
 
+"" Undo/Redo
+map <Leader>r :redo<CR>
+
 "" Jump forward
 map W <C-f>
-map B <C-b>
+map B <C-br
+
+"" Window switching
+nmap <F4> :wincmd k<CR>
+nmap <F3> :wincmd j<CR>
+nmap <F1> :wincmd h<CR>
+nmap <Leader>w :wincmd w<CR>
 
 "" Syntastic
 set statusline+=%#warningmsg#
@@ -349,13 +375,6 @@ au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 " ZSH
 au BufRead,BufNewFile .zsh_rc,.functions,.commonrc set ft=zsh
 
-" CtrlP
-let g:ctrlp_match_window_bottom = 0 " Show at top of window
-let g:ctrlp_working_path_mode = 2 " Smart path mode
-let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
-let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
-let g:ctrlp_split_window = 1 " <CR> = New Tab
-
 " Clojure.vim
 let g:vimclojure#ParenRainbow = 1 " Enable rainbow parens
 let g:vimclojure#DynamicHighlighting = 1 " Dynamic highlighting
@@ -377,4 +396,60 @@ let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/content', 'path_html': '~/Drop
 
 " venus
 map <F12> :VenusRun<CR>
+
+" Unite
+nnoremap <leader>b :Unite -quick-match buffer<cr>
+nnoremap <leader>. :Unite file_rec<cr>
+nnoremap <leader>/ :Unite grep:.<cr>
+
+" Unite Ack
+command! UniteAckToggleCase :let g:unite_source_ack_ignore_case=!g:unite_source_ack_ignore_case|let g:unite_source_ack_ignore_case
+" show executed commmand
+let g:unite_source_ack_enable_print_cmd = 1
+" define shortcut so that I can use :Unite ack:g:some_method to search some_method from gem directory
+
+function! s:escape_visual(...) "{{{
+    let escape = a:0 ? a:1 : ''
+    normal `<
+    let s = col('.') - 1
+    normal `>
+    let e = col('.') - 1
+    let line = getline('.')
+    let pat = line[s : e]
+    return escape(pat, escape)
+endfunction"}}}
+function! s:visual_unite_input() "{{{
+    return s:escape_visual(" ")
+endfunction"}}}
+function! s:visual_unite_arg() "{{{
+    return s:escape_visual(' :\')
+endfunction"}}}
+
+" unite ack
+nnoremap <silent> <Space>a  :<C-u>exe "Unite -buffer-name=ack ack::" . escape(expand('<cword>'),' :\')<CR>
+vnoremap <silent> <Space>a  :<C-u>exe "Unite -buffer-name=ack ack::" . <SID>visual_unite_arg()<CR>
+nnoremap <silent> <Space>A  :<C-u>UniteResume ack<CR>
+
+command! UniteAckToggleCase :let g:unite_source_ack_ignore_case=!g:unite_source_ack_ignore_case|let g:unite_source_ack_ignore_case
+
+" shortcut
+let g:unite_source_ack_targetdir_shortcut = {
+            \ 'bundle': '$HOME/.vim/bundle',
+            \ 'neco': "$HOME/.vim/bundle/neocomplcache",
+            \ 'unite': "$HOME/.vim/bundle/unite.vim",
+            \ 'vagrant':  '/var/lib/gems/1.8/gems/vagrant-0.7.5',
+            \ 'gem':  '/var/lib/gems/1.8/gems',
+            \ 'chef':  '/var/lib/gems/1.8/gems/chef-0.10.0',
+            \ 'nova': "$HOME/local/github/openstack/nova-2011.1/nova",
+            \ }
+
+" set filter to use converter_ack_shortcut to let candidate cosmically
+" converted with shortcut
+call unite#custom_filters('ack', ['matcher_default', 'sorter_default', 'converter_ack_shortcut'])
+" command which use shortcut
+command! -nargs=1 SearchBundle :Unite ack:bundle:<args>
+command! -nargs=1 SearchGem    :Unite ack:gem:<args>
+command! -nargs=1 SearchUnite  :Unite ack:unite:<args>
+command! -nargs=1 SearchNeco   :Unite ack:neco:<args>
+
 
