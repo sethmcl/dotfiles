@@ -46,9 +46,14 @@ fi
 alias ca='pygmentize -O style=monokai -f console256 -g'
 
 # GIT STUFF
+alias gbd="git branch -d $1"
+alias gnb="git checkout -b $1"
 
 # Git checkout
 alias gc="git checkout $@"
+
+# last tag
+alias lasttag="git describe --abbrev=0 --tags"
 
 # Undo a `git push`
 alias undopush="git push -f origin HEAD^:master"
@@ -110,3 +115,22 @@ done
 
 # post json
 alias postjson="curl -v -H \"Content-Type: application/json\" -X POST -d '$0' $1"
+
+# git force stash pop
+alias gpop="git stash show -p | git apply && git stash drop"
+
+#tmux
+alias tmls="tmux list-sessions"
+alias tmat="tmux attach-session -t $1"
+
+#s3cmd
+alias sls="s3cmd ls $1"
+
+#vim
+alias v="mvim"
+
+#disk usage
+alias dus='du -Psckx * | sort -nr'
+
+#make a test file
+# alias make_file="dd if=/dev/zero of=test.img bs=1024 count=0 seek=$[1024*10]"

@@ -16,6 +16,8 @@ NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle 'cakebaker/scss-syntax.vim.git'
 NeoBundle 'Lokaltog/vim-powerline.git'
+NeoBundle 'Lokaltog/vim-easymotion.git'
+NeoBundle 'Valloric/YouCompleteMe.git'
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'git://repo.or.cz/vcscommand.git'
 NeoBundle 'jimmyhchan/dustjs.vim'
@@ -30,7 +32,6 @@ NeoBundle 'majutsushi/tagbar.git'
 NeoBundle 'suan/vim-instant-markdown.git'
 NeoBundle 'vim-scripts/jsbeautify.git'
 NeoBundle 'tpope/vim-unimpaired.git'
-NeoBundle 'vimwiki/vimwiki.git'
 NeoBundle 'samsonw/vim-task'
 NeoBundle 'venusjs/venus.vim'
 NeoBundle 'vim-scripts/DirDiff.vim'
@@ -39,6 +40,10 @@ NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'Shougo/vimproc.vim.git'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 't9md/vim-unite-ack.git'
+NeoBundle 'juvenn/mustache.vim'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'scrooloose/nerdtree.git'
+NeoBundle 'moll/vim-bbye.git'
 
 filetype plugin indent on         " load file type plugins + indentation
 syntax enable
@@ -100,7 +105,9 @@ endif
 
 "" VIM Filer Explorer
 let g:vimfiler_as_default_explorer = 1
-nmap <Leader>t :VimFilerSplit<CR>
+" nmap <Leader>t :VimFilerSplit<CR>
+nmap <Leader>t :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 "" Control-P Bindings
 nmap <Leader>. :CtrlP<CR>
@@ -114,12 +121,12 @@ map <Leader>r :redo<CR>
 
 "" Jump forward
 map W <C-f>
-map B <C-br
+map B <C-b>
 
 "" Window switching
-nmap <F4> :wincmd k<CR>
-nmap <F3> :wincmd j<CR>
-nmap <F1> :wincmd h<CR>
+nmap <Leader>wk :wincmd k<CR>
+nmap <Leader>wj :wincmd j<CR>
+nmap <Leader>wh :wincmd h<CR>
 nmap <Leader>w :wincmd w<CR>
 
 "" Syntastic
@@ -215,7 +222,8 @@ set undofile " Persistent Undo.
 set visualbell " Use visual bell instead of audible bell (annnnnoying)
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
-set wildignore+=*/smarty/*,*/vendor/*,*/node_modules/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*
+" set wildignore+=*/smarty/*,*/vendor/*,*/node_modules/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*
+set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*
 set wildmenu " Hitting TAB in command mode will show possible completions above command line.
 set wildmode=list:longest " Complete only until point of ambiguity.
 set winminheight=0 "Allow splits to be reduced to a single line.
@@ -401,6 +409,8 @@ map <F12> :VenusRun<CR>
 nnoremap <leader>b :Unite -quick-match buffer<cr>
 nnoremap <leader>. :Unite file_rec<cr>
 nnoremap <leader>/ :Unite grep:.<cr>
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_ignore_pattern = ''
 
 " Unite Ack
 command! UniteAckToggleCase :let g:unite_source_ack_ignore_case=!g:unite_source_ack_ignore_case|let g:unite_source_ack_ignore_case
@@ -441,6 +451,7 @@ let g:unite_source_ack_targetdir_shortcut = {
             \ 'gem':  '/var/lib/gems/1.8/gems',
             \ 'chef':  '/var/lib/gems/1.8/gems/chef-0.10.0',
             \ 'nova': "$HOME/local/github/openstack/nova-2011.1/nova",
+            \ 'bjs': "$BOWIE_HOME/public/javascripts"
             \ }
 
 " set filter to use converter_ack_shortcut to let candidate cosmically
@@ -452,4 +463,28 @@ command! -nargs=1 SearchGem    :Unite ack:gem:<args>
 command! -nargs=1 SearchUnite  :Unite ack:unite:<args>
 command! -nargs=1 SearchNeco   :Unite ack:neco:<args>
 
+" fugitive git
+nnoremap <Leader>g :Gstatus<CR>
 
+let loaded_matchparen = 1
+
+" turn off syntax highlighting for large files
+autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
+set guifont=Monaco:h12
+
+" Code folding for JavaScript
+function! JavaScriptFold() 
+    setl foldmethod=syntax
+    setl foldlevelstart=1
+    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+
+    function! FoldText()
+        return substitute(getline(v:foldstart), '{.*', '{...}', '')
+    endfunction
+    setl foldtext=FoldText()
+endfunction
+au FileType javascript call JavaScriptFold()
+au FileType javascript setl fen
+
+" VIM Buffer Bye mapping
+:nnoremap <Leader>q :Bdelete<CR>

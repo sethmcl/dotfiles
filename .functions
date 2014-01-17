@@ -151,3 +151,12 @@ function m2rst() {
   # convert markdown to reStructured Text
   pandoc -f markdown -t rst $FILE > ${FILE%.txt}.rst
 }
+
+# get local IP adress on osx
+get_internal_ip_osx() {
+  ifconfig en0 | grep inet | grep -v inet6 | awk '{print $2}'
+}
+
+__git_files () { 
+    _wanted files expl 'local files' _files     
+}

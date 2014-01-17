@@ -40,7 +40,7 @@ ZSH_THEME="seth"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git rails3 ruby bower bundler per-directory-history sublime vi-mode web-search history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -51,7 +51,7 @@ source $ZSH/oh-my-zsh.sh
 # source ~/.exports
 # source ~/.aliases
 # source ~/.functions
-for file in ~/.{extra,exports,aliases,functions}; do
+for file in ~/.{exports,aliases,functions,extra}; do
 	[ -r "$file" ] && source "$file"
 done
 unset file
@@ -60,3 +60,9 @@ unset file
 eval "$(fasd --init auto)"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# vim key bindings
+bindkey -v
