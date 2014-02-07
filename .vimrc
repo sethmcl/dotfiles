@@ -173,6 +173,7 @@ set foldlevel=2
 set foldmethod=syntax " Markers are used to specify folds.
 set foldminlines=0 " Allow folding single lines
 set foldnestmax=3 " Set max fold nesting level
+set nofoldenable
 set formatoptions=
 set formatoptions+=c " Format comments
 set formatoptions+=r " Continue comments by default
