@@ -52,6 +52,12 @@ alias gnb="git checkout -b $1"
 # Git checkout
 alias gc="git checkout $@"
 
+# git commit
+alias gi="git commit"
+
+# git status
+alias gs="git status"
+
 # last tag
 alias lasttag="git describe --abbrev=0 --tags"
 

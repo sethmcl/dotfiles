@@ -1,3 +1,18 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=100000
+SAVEHIST=10000
+setopt appendhistory autocd beep extendedglob nomatch
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/Users/u779/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -40,7 +55,8 @@ ZSH_THEME="seth"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rails3 ruby bower bundler per-directory-history sublime vi-mode web-search history-substring-search)
+# plugins=(git git-flow sublime web-search history-substring-search)
+plugins=(git git-flow sublime web-search history-substring-search zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -66,3 +82,14 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # vim key bindings
 bindkey -v
+
+# up arrow history behavior
+# autoload up-line-or-beginning-search
+# autoload down-line-or-beginning-search
+# zle -N up-line-or-beginning-search
+# zle -N down-line-or-beginning-search
+
+# [[ -n "${key[Up]}"      ]]  && bindkey   "${key[Up]}"       up-line-or-beginning-search
+# [[ -n "${key[Down]}"    ]]  && bindkey   "${key[Down]}"    down-line-or-beginning-search
+
+source $ZSH/plugins/history-substring-search/history-substring-search.zsh
