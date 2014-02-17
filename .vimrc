@@ -44,6 +44,8 @@ NeoBundle 'juvenn/mustache.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle 'moll/vim-bbye.git'
+NeoBundle 'mikewest/vimroom'
+NeoBundle 'laktek/distraction-free-writing-vim'
 
 filetype plugin indent on         " load file type plugins + indentation
 syntax enable
@@ -256,7 +258,7 @@ endif
 noremap <leader>W :w !sudo tee %<CR>
 
 " Remap :W to :w
-command W w
+" command W w
 
 " Better mark jumping (line + col)
 nnoremap ' `
@@ -489,3 +491,46 @@ au FileType javascript setl fen
 
 " VIM Buffer Bye mapping
 :nnoremap <Leader>q :Bdelete<CR>
+
+" Full screen mode changes
+if has("gui_macvim")
+  " looks a little better fullscreen
+  " set bg=dark
+
+  " remove scroll bars and tool bar
+  set guioptions-=r
+  set guioptions-=L
+  set guioptions-=T
+
+  " nice font if you have it
+  set guifont=Anonymous\ Pro:h16
+
+  " expand width in fullscreen 
+  " set fuoptions=maxvert,maxhorz
+
+  " hide tab bar
+  set showtabline=0
+
+  " hide fold column
+  set foldcolumn=0
+
+  " change key bindings
+  macm Window.Select\ Previous\ Tab key=<D-Left>
+  macm Window.Select\ Next\ Tab key=<D-Right>
+  macm Window.Toggle\ Full\ Screen\ Mode key=<D-Return>
+endif
+
+" Word processor mode
+func! WordProcessorMode() 
+  setlocal formatoptions=1 
+  setlocal noexpandtab 
+  map j gj 
+  map k gk
+  setlocal spell spelllang=en_us 
+  " set thesaurus+=/Users/s/.vim/thesaurus/mthesaur.txt
+  set complete+=s
+  set formatprg=par
+  setlocal wrap 
+  setlocal linebreak 
+endfu 
+com! WP call WordProcessorMode()
